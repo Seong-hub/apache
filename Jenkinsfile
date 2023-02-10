@@ -61,7 +61,7 @@ spec:
 		}       
 	}
         stage( "Clean Up Existing Deployments" ) {
-       	steps {
+       		steps {
 		        container("kubectl") {
 				try { 
         	                	sh "kubectl delete -n apache pods/apache"
