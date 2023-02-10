@@ -63,7 +63,7 @@ spec:
 		        container("kubectl") {
 				script {
 					try { 
-			       	        	sh "kubectl delete -n apache pods/apache"
+			       	        	sh "kubectl delete -n apache depolyment.apps apache"
 					} catch (e) { sh "echo not delete pods hint : kubectl get pods" }
 				}
 			}
@@ -73,7 +73,7 @@ spec:
 		steps {
         	        container("kubectl") {
 //                	        sh "kubectl run apache --image lalll5555/apache:${env.BUILD_NUMBER} -n apache"
-                	        sh "kubectl apply -f ./apache-depolyment.yaml -n apache"
+                	        sh "kubectl apply -f ./apache_depolyment.yaml -n apache"
 	                        sh "sleep 5"
 				sh "echo create of depolyment check"
 				sh "kubectl get depolyment.apps -n apache"
