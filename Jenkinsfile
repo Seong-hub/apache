@@ -63,9 +63,9 @@ spec:
         stage( "Clean Up Existing Deployments" ) {
        		steps {
 		        container("kubectl") {
-				try { 
+//				try { 
         	                	sh "kubectl delete -n apache pods/apache"
-				} catch (e){ sh "echo not delete pods hint : kubectl get pods"}
+//				} catch (e){ sh "echo not delete pods hint : kubectl get pods"}
 			}
                 }
         }
