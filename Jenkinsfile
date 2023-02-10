@@ -76,7 +76,7 @@ spec:
         	        container("kubectl") {
                 	        sh "kubectl run echohello --image lalll5555/apache:${env.BUILD_NUMBER} -n apache"
 	                        sh "sleep 5"
-				sh "create of pod check"
+				sh "echo create of pod check"
 				sh "kubectl get pods -n apache"
 //	                        sh "kubectl apply -n kuard -f ./kuard-ingress.yaml"
 
