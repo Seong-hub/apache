@@ -1,3 +1,5 @@
+def tag = "${env.BUILD_NUMBER}"
+
 pipeline {
     agent {
         kubernetes {
@@ -72,11 +74,11 @@ spec:
 	stage( "Deploy to Cluster" ) {
 		steps {
         	        container("kubectl") {
-//                	        sh "kubectl run apache --image lalll5555/apache:${env.BUILD_NUMBER} -n apache"
-                	        sh "kubectl apply -f ./apache_depolyment.yaml -n apache"
+//                	        sh "kubectl run apache --image lalll5555/apache:${tag} -n apache"
+                	        sh "kubectl apply -f ./apache_deployment.yaml -n apache"
 	                        sh "sleep 5"
-				sh "echo create of depolyment check"
-				sh "kubectl get depolyment.apps -n apache"
+				sh "echo create of deployment check"
+				sh "kubectl get deployment.apps -n apache"
 			}
         	}
         }
