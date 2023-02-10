@@ -37,26 +37,24 @@ spec:
 	stage("Build Microservice image") {
 		steps {                 
 			container("docker") {
-				sh "docker ps -a"
-					script {
-						try {
-						appImage = docker.build("lalll5555/apache")
-						} catch (e) {sh "echo docker build fail"}
-
+				script {
+					try {
+					appImage = docker.build("lalll5555/apache")
+					} catch (e) {sh "echo docker build fail"}
 						docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-ID') {
-							try {
-						               appImage.push("${env.BUILD_NUMBER}")
-//					                       appImage.push("latest")
-							} catch (e) { sh 'echo docker push fail'}
-						}
-	                              	}
+						try {
+					               appImage.push("${env.BUILD_NUMBER}")
+//				                       appImage.push("latest")
+						} catch (e) { sh 'echo docker push fail'}
+					}
+                              	}
 			}                                                                                
               }
       	}
 	stage( "depolyment list check" ) {
 		steps {
 			container("kubectl") {
-                		sh "kubectl get deployments.apps -A "
+                		sh "kubectl get deployments.apps -n apache "
                 	}
 		}       
 	}
@@ -74,12 +72,11 @@ spec:
 	stage( "Deploy to Cluster" ) {
 		steps {
         	        container("kubectl") {
-                	        sh "kubectl run apache --image lalll5555/apache:${env.BUILD_NUMBER} -n apache"
+//                	        sh "kubectl run apache --image lalll5555/apache:${env.BUILD_NUMBER} -n apache"
+                	        sh "kubectl apply -f ./apache-depolyment.yaml -n apache"
 	                        sh "sleep 5"
-				sh "echo create of pod check"
-				sh "kubectl get pods -n apache"
-//	                        sh "kubectl apply -n kuard -f ./kuard-ingress.yaml"
-
+				sh "echo create of depolyment check"
+				sh "kubectl get depolyment.apps -n apache"
 			}
         	}
         }
