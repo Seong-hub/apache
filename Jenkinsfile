@@ -65,7 +65,7 @@ spec:
 		        container("kubectl") {
 				script {
 					try { 
-			       	        	sh "kubectl delete -n apache depolyment.apps apache"
+			       	        	sh "kubectl delete -n apache deployment.apps apache"
 					} catch (e) { sh "echo not delete pods hint : kubectl get pods" }
 				}
 			}
