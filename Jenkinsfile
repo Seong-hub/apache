@@ -47,7 +47,7 @@ spec:
 							try {
 						               appImage.push("${env.BUILD_NUMBER}")
 //					                       appImage.push("latest")
-							} catch (e){ sh 'echo docker push fail'}
+							} catch (e) { sh 'echo docker push fail'}
 						}
 	                              	}
 			}                                                                                
@@ -63,9 +63,9 @@ spec:
         stage( "Clean Up Existing Deployments" ) {
        		steps {
 		        container("kubectl") {
-//				try { 
-        	                	sh "kubectl delete -n apache pods/apache"
-//				} catch (e){ sh "echo not delete pods hint : kubectl get pods"}
+				try { 
+	       	                	sh "kubectl delete -n apache pods/apache"
+				} catch (e) { sh "echo not delete pods hint : kubectl get pods" }
 			}
                 }
         }
