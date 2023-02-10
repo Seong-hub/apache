@@ -74,7 +74,7 @@ spec:
 	stage( "Deploy to Cluster" ) {
 		steps {
         	        container("kubectl") {
-                	        sh "kubectl run echohello --image lalll5555/apache:${env.BUILD_NUMBER} -n apache"
+                	        sh "kubectl run apache --image lalll5555/apache:${env.BUILD_NUMBER} -n apache"
 	                        sh "sleep 5"
 				sh "echo create of pod check"
 				sh "kubectl get pods -n apache"
