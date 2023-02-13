@@ -66,7 +66,7 @@ spec:
 			       	        	sh "kubectl delete -n apache deployments.apps apache-depolyment"
 			       	        	sh "kubectl delete -n apache services apache-service"
 						sh "kubectl delete -n apache ingress apache-ingress"
-			       	       	} catch (e) { sh "echo Deployments,Service,Ingress not delete (hint : kubectl get deployments,service,ingress -n apache)" }
+			       	       	} catch (e) { echo Deployments,Service,Ingress not delete (hint : kubectl get deployments,service,ingress -n apache) }
 				}
 			}
                 }
