@@ -34,3 +34,4 @@ spec:
     protocol: TCP
   selector:
     app: apache
+  type: NodePort
