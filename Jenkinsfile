@@ -58,13 +58,21 @@ spec:
                 	}
 		}       
 	}
-        stage( "Clean Up Existing Deployments" ) {
+        stage( "Clean Up Existing Deployments,Service,Ingress" ) {
        		steps {
 		        container("kubectl") {
 				script {
 					try { 
 			       	        	sh "kubectl delete -n apache deployments.apps apache-depolyment"
 					} catch (e) { sh "echo deployment not delete (hint : kubectl get deployment -n apache)" }
+					try { 
+			       	        	sh "kubectl delete -n apache services apache-service"
+					} catch (e) { sh "echo services not delete (hint : kubectl get services -n apache)" }
+					try { 
+			       	        	sh "kubectl delete -n apache ingress apache-ingress"
+					} catch (e) { sh "echo ingress not delete (hint : kubectl get ingress -n apache)" }
+
+
 				}
 			}
                 }
@@ -75,10 +83,18 @@ spec:
 //                	        sh "kubectl run apache --image lalll5555/apache:BUILD_NUMBER -n apache"
                 	        sh "kubectl apply -f ./apache_deployment.yaml -n apache"
 	                        sh "sleep 5"
-				sh "echo create of deployment check"
-				sh "kubectl get deployment.apps -n apache"
 			}
         	}
         }
+	stage( "Check Deployments,Service,Ingress" ) {
+		steps {
+        	        container("kubectl") {
+				sh "kubectl get deployment.apps -n apache"
+				sh "kubectl get services -n apache"
+				sh "kubectl get ingress -n apache"
+			}
+        	}
+        }
+
 }
 }
