@@ -34,8 +34,7 @@ spec:
     protocol: TCP
   selector:
     app: apache
-  type: LoadBalancer
-  loadBalancerIP: 203.235.116.241
+  type: NodePort
 
 ---
 
