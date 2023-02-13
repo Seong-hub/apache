@@ -52,7 +52,7 @@ spec:
   tls:
   - hosts:
     - apache.leesb.kro.kr
-    secretName: apache.leesb.kro.kr_tls
+    secretName: apache.leesb.kro.kr-tls
   rules:
     - host: apache.leesb.kro.kr
       http:
