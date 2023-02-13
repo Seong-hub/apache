@@ -18,7 +18,7 @@ spec:
         imagePullPolicy: Always
         name: apache
         ports:
-        - containerPort: 8080
+        - containerPort: 80
 
 ---
 
@@ -30,7 +30,7 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: 8080
+    targetPort: 80
     protocol: TCP
   selector:
     app: apache
