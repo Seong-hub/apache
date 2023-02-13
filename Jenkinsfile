@@ -80,12 +80,10 @@ spec:
 			}
         	}
         }
-	stage( "Check Deployments,Service,Ingress" ) {
+	stage( "Check Deployments,Service,Ingress of apache namespace" ) {
 		steps {
         	        container("kubectl") {
-				sh "kubectl get deployment.apps -n apache"
-				sh "kubectl get services -n apache"
-				sh "kubectl get ingress -n apache"
+				sh "kubectl get deployments,service,ingress -n apache"
 			}
         	}
         }
