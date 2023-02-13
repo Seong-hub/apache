@@ -14,7 +14,7 @@ spec:
         app: apache
     spec:
       containers:
-      - image: lalll5555/apache:${env.BUILD_NUMBER}
+      - image: lalll5555/apache:latest
         imagePullPolicy: Always
         name: apache
         ports:

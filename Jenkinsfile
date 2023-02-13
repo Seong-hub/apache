@@ -44,7 +44,7 @@ spec:
 						docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-ID') {
 						try {
 					               appImage.push("${env.BUILD_NUMBER}")
-//				                       appImage.push("latest")
+				                       appImage.push("latest")
 						} catch (e) { sh 'echo docker push fail'}
 					}
                               	}
@@ -64,7 +64,7 @@ spec:
 				script {
 					try { 
 			       	        	sh "kubectl delete -n apache deployments.apps apache-depolyment"
-					} catch (e) { sh "echo not delete deployment (hint : kubectl get deployment -n apache)" }
+					} catch (e) { sh "echo deployment not delete (hint : kubectl get deployment -n apache)" }
 				}
 			}
                 }
