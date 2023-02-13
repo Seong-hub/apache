@@ -64,15 +64,9 @@ spec:
 				script {
 					try { 
 			       	        	sh "kubectl delete -n apache deployments.apps apache-depolyment"
-					} catch (e) { sh "echo deployment not delete (hint : kubectl get deployment -n apache)" }
-					try { 
 			       	        	sh "kubectl delete -n apache services apache-service"
-					} catch (e) { sh "echo services not delete (hint : kubectl get services -n apache)" }
-					try { 
-			       	        	sh "kubectl delete -n apache ingress apache-ingress"
-					} catch (e) { sh "echo ingress not delete (hint : kubectl get ingress -n apache)" }
-
-
+						sh "kubectl delete -n apache ingress apache-ingress"
+			       	       	} catch (e) { sh "echo Deployments,Service,Ingress not delete (hint : kubectl get deployments,service,ingress -n apache)" }
 				}
 			}
                 }
